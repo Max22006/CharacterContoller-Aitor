@@ -1,3 +1,7 @@
 ﻿<Solution>
+  <Project Path="Unity.AI.Navigation.Editor.csproj" />
+  <Project Path="Unity.AI.Navigation.Editor.ConversionSystem.csproj" />
+  <Project Path="Unity.AI.Navigation.csproj" />
+  <Project Path="Unity.AI.Navigation.Updater.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
 </Solution>
