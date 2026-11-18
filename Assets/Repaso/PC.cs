@@ -5,7 +5,7 @@ public class PC : MonoBehaviour
 {
     /*Descargar Cinemachine (free look camera),Rellenar los apartados, Camera(Poner el Target), Axis(Colocar en Orbit Look) y El Gain en -si va del reves
     tambien es la sensibilidad, Cambiar Orbital Follow para acomodar la camara.
-    Layer de suelo al Suelo, Componente Character Controller al personaje, Ground Sensor. [Aim Movement] */
+    Layer de suelo al Suelo, Componente Character Controller al personaje, Ground Sensor.*/
 
     private CharacterController _controller;
 
