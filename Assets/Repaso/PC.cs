@@ -24,7 +24,7 @@ public class PC : MonoBehaviour
     [SerializeField] private float _sensorRadius;
     [SerializeField] private LayerMask _groundLayer;
 
-   // private Animator _animator; // Activa animaciones
+    private Animator _animator; // Activa animaciones ( 2D Freeform Directional, Horizontal, Vertical(float), Nombre + Loop time(menos salto))
     private Transform _cameraTransform;
 
     private float _turnSmoothVelocity; //Hace que no sea brusco el cambio
@@ -33,11 +33,11 @@ public class PC : MonoBehaviour
     void Awake()
     {
         _controller = GetComponent<CharacterController>();
+        _animator = GetComponentInChildren<Animator>();
 
         _moveAction = InputSystem.actions["Move"];
         _jumpAction = InputSystem.actions["Jump"];
 
-       // _animator = GetComponent<Animator>();
         _cameraTransform = Camera.main.transform;
     }
     void Start()
@@ -56,7 +56,7 @@ public class PC : MonoBehaviour
         {
             Jump();
         }
-        //_animator.SetBool("IsJumping", !IsGrounded()); //Para la animacion de salto que se reproduzca.
+        _animator.SetBool("IsJumping", !IsGrounded()); //Para la animacion de salto que se reproduzca.
 
         AimMovement();
         
@@ -65,8 +65,8 @@ public class PC : MonoBehaviour
     {
         Vector3 direction = new Vector3(_moveInput.x, 0, _moveInput.y);
 
-    //   _animator.SetFloat("Horizontal", _moveInput.x, 0.2f, Time.deltaTime);  //Es para las animaciones con la rotacion adecuada.
-    //   _animator.SetFloat("Vertical", _moveInput.y,  0.2f, Time.deltaTime);
+        _animator.SetFloat("Horizontal", _moveInput.x, 0.2f, Time.deltaTime);  //Es para las animaciones con la rotacion adecuada.
+        _animator.SetFloat("Vertical", _moveInput.y,  0.2f, Time.deltaTime);
 
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _cameraTransform.eulerAngles.y;
         float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, _cameraTransform.eulerAngles.y, ref _turnSmoothVelocity, _smoothTime);
